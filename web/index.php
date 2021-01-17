@@ -1,5 +1,2 @@
 <?php
-
-  include 'hello.html';
-
-?>
+include 'week2/index.php';
