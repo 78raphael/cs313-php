@@ -1,10 +1,5 @@
 <?php
-  /**
-   * Hello world application
-   */
+
+  include 'hello.html';
+
 ?>
-<html>
-<body>
-Hello World!
-</body>
-</html>
