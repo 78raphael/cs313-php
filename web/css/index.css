@@ -79,8 +79,25 @@ footer  {
   margin: 0;
   background-color: var(--lavender);
   color: var(--white);
+  font-size: 1rem;
 }
 
 .shoe {
+  margin: 0 25px;
   padding: 10px;
+}
+
+.success  {
+  color: green;
+  padding: 0 15px;
+}
+
+.warning  {
+  color: #027ae3;
+  padding: 0 15px;
+}
+
+.failed {
+  color: red;
+  padding: 0 15px;
 }
