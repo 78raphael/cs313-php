@@ -3,6 +3,7 @@ $assignments_list = '<ul class="assignments-ul">
   <li><a href="?action=week1" alt="Week 1 assignment">Week 1</a></li>
   <li><a href="?action=week2" alt="Week 2 assignment">Week 2</a></li>
   <li><a href="?action=week3" alt="Week 3 assignment">Week 3</a></li>
+  <li><a href="?action=team5" alt="Week 5 Team assignment">Week 3 - Team Activity</a></li>
 <!--
   <li><a href="?action=week4" alt="Week 4 assignment">Week 4</a></li>
   -->
