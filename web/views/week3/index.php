@@ -1,11 +1,9 @@
 <?php
 if(!isset($_SESSION)) {
   session_start();
-  $first_visit = true;
 } 
 else {
   // var_dump($_SESSION);
-  $first_visit = false;
 }
     $message = false;
     $count = 0;
@@ -79,11 +77,6 @@ else {
             </div>
           </a>
         </div>
-
-        <!-- <h1>Destroy Session</h1>
-        <form action="" method="get">
-          <button type="submit" name="destroy" value="true">Destroy Session</button>
-        </form> -->
       </div>
     </main>
 <?=$bottom_stuff?>
@@ -91,24 +84,7 @@ else {
 </html>
 
 <?php
-  // if (isset($_GET["destroy"]))  {
-  //     session_destroy();
-  // }
-
-
   if(isset($_SESSION['message'])) { 
     unset($_SESSION['message']); 
   }
-
-  //echo variable info
-  // echo "Session: <br>";
-  // if(isset($_SESSION)) {
-  //   foreach($_SESSION as $key=>$value)  {
-  //     echo 'key: ' . $key . ' :: value ' . $value . '<br>';
-  //   }
-  // }
-  // var_dump($_SESSION);
-  // var_dump($_SESSION['item1']);
-  // var_dump($_SESSION['item2']);
-  // unset($_SESSION["message"]);
 ?>

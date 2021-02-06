@@ -2,13 +2,14 @@
 
 function connector() {
   if(check_local()) {
-    $server = 'localhost';
+
+    $server = '127.0.0.1';
     $db = 'CSE341';
     $username = 'root';
     $password = 'Xf=(ln!6VX';
     $dsn = "mysql:host=$server;dbname=$db";
     $options = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION);
-  
+
     try {
       $link = new PDO($dsn, $username, $password, $options);
       return $link;

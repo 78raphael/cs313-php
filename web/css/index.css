@@ -68,6 +68,11 @@ nav ul li a:visited {
   text-decoration: none;
 }
 
+.breadcrumbs  {
+  margin: 0;
+  background-color: var(--deep-blue);
+}
+
 .assignments-ul  {
   display: flex;
   flex-direction: column;
