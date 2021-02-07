@@ -2,7 +2,6 @@
 
 function connector() {
   if(check_local()) {
-    return 'INSIDE CONNECTOR - IF<br>';   // <—————————————————————————————————— TESTING
 
     $server = '127.0.0.1';
     $db = 'CSE341';
@@ -20,7 +19,6 @@ function connector() {
       exit;
     }
   } else {
-    return 'INSIDE CONNECTOR - ELSE<br>'; // <—————————————————————————————————— TESTING
 
     try {
       $dbUrl = getenv('DATABASE_URL');
@@ -36,6 +34,7 @@ function connector() {
       $db = new PDO("pgsql:host=$dbHost;port=$dbPort;dbname=$dbName", $dbUser, $dbPassword);
 
       $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+      return 'INSIDE CONNECTOR - TRY<br>'; // <—————————————————————————————————— TESTING
     }
     catch (PDOException $ex)  {
       echo 'Error!: ' . $ex->getMessage();
