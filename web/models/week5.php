@@ -23,3 +23,26 @@ function week5details($where)  {
 
   return $scripture;
 }
+
+function infoDump($query) {
+  $db = connector();
+
+  $results = '';
+
+  foreach($db->query($query) as $row) {
+    $results .= 'Fullname: ' . $row['first_name'] . ' ' . $row['last_name'] . 
+    '<br>Email: ' . $row['email'] . 
+    '<br>User Status: ' . $row['userStatus'] .
+    '<br>Appointment Time: ' . $row['appt_time'] .
+    '<br>Appointment Status: ' . $row['apptStatus'] .
+    '<br>Appointment Notes: ' . $row['notes'] .
+    '<br>Session Name: ' . $row['name'] .
+    '<br>Price: $' . $row['price'] .
+    '<br>Session Status: ' . $row['sessionStatus'];
+
+    $results .= '<br><hr>';
+  }
+
+  return $results;
+
+}

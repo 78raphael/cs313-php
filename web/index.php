@@ -56,6 +56,14 @@ switch($action)
     include 'views/team5/details.php';
     break;
   case 'week5':
+    $query = "SELECT u.id, u.first_name, u.last_name, u.email, u.status AS userStatus, u.active, a.appt_time, a.status AS apptStatus, r.notes, s.name, s.price, s.status AS sessionStatus
+      FROM users u
+      INNER JOIN appointments a ON a.user_id = u.id
+      INNER JOIN reviews r ON r.appointment_id = a.id
+      INNER JOIN sessions s ON a.session_id = s.id";
+
+    $results = infoDump($query);
+
     include 'views/week5/index.php';
     break;
   case 'week6':
