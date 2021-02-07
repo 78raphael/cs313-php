@@ -1,9 +1,8 @@
 <?php
 
 function week5($where)  {
-  return 'inside week5: ' . $where . '<br>';   // <—————————————————————————————————— TESTING
   $db = connector();
-
+  return 'inside week5: ' . $where . '<br>';   // <—————————————————————————————————— TESTING
   $scripture = '';
 
   foreach ($db->query($where) as $row)  {
