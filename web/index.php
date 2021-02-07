@@ -36,15 +36,19 @@ switch($action)
     include 'views/week4/index.php';
     break;
   case 'team5':
-    echo 'inside team5';
+    echo 'inside team5<br>';
     if(isset($_POST['search']))   {
+      echo 'inside $_POST[search] - IF<br>';
 
       $where = "SELECT id, book, chapter, verse, content FROM Scriptures WHERE book = '".$_POST['search']."'";
     } else  {
+      echo 'inside $_POST[search] - ELSE<br>';
       $where = "SELECT id, book, chapter, verse, content FROM Scriptures";
     }
 
+    echo 'before $toPrint<br>';
     $toPrint = week5($where);
+    echo 'after $toPrint<br>';
 
     include 'views/team5/index.php';
     break;
@@ -63,6 +67,8 @@ switch($action)
       INNER JOIN appointments a ON a.user_id = u.id
       INNER JOIN reviews r ON r.appointment_id = a.id
       INNER JOIN sessions s ON a.session_id = s.id";
+
+    echo 'Query: ' . $query . '<br>';
 
     $results = infoDump($query);
 
