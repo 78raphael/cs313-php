@@ -2,6 +2,7 @@
 
 function connector() {
   if(check_local()) {
+    return 'INSIDE CONNECTOR - IF<br>';   // <—————————————————————————————————— TESTING
 
     $server = '127.0.0.1';
     $db = 'CSE341';
@@ -19,6 +20,7 @@ function connector() {
       exit;
     }
   } else {
+    return 'INSIDE CONNECTOR - ELSE<br>'; // <—————————————————————————————————— TESTING
 
     try {
       $dbUrl = getenv('DATABASE_URL');

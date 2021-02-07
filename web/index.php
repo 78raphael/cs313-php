@@ -40,13 +40,13 @@ switch($action)
     if(isset($_POST['search']))   {
       echo 'inside $_POST[search] - IF<br>';   // <—————————————————————————————————— TESTING
 
-      $where = "SELECT id, book, chapter, verse, content FROM Scriptures WHERE book = '".$_POST['search']."'";
+      $where = "SELECT id, book, chapter, verse, content FROM scriptures WHERE book = '".$_POST['search']."'";
     } else  {
       echo 'inside $_POST[search] - ELSE<br>';   // <—————————————————————————————————— TESTING
-      $where = "SELECT id, book, chapter, verse, content FROM Scriptures";
+      $where = "SELECT id, book, chapter, verse, content FROM scriptures";
     }
 
-    echo 'WHERE: '. $where . '<br>';   // <—————————————————————————————————— TESTING
+    echo 'WHERE: '. $where . '<br><br>';   // <—————————————————————————————————— TESTING
     echo 'before $toPrint<br>';   // <—————————————————————————————————— TESTING
     $toPrint = week5($where);
     echo 'after $toPrint: '. $toPrint . '<br>';   // <—————————————————————————————————— TESTING
@@ -56,7 +56,7 @@ switch($action)
   case 'team5details':
     $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
 
-    $where = "SELECT id, book, chapter, verse, content FROM Scriptures WHERE id = '". $id ."'";
+    $where = "SELECT id, book, chapter, verse, content FROM scriptures WHERE id = '". $id ."'";
 
     $toPrint = week5details($where);
     include 'views/team5/details.php';
