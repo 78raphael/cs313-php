@@ -36,6 +36,7 @@ switch($action)
     include 'views/week4/index.php';
     break;
   case 'team5':
+    echo 'inside team5';
     if(isset($_POST['search']))   {
 
       $where = "SELECT id, book, chapter, verse, content FROM Scriptures WHERE book = '".$_POST['search']."'";
@@ -56,6 +57,7 @@ switch($action)
     include 'views/team5/details.php';
     break;
   case 'week5':
+    echo 'inside week5';
     $query = "SELECT u.id, u.first_name, u.last_name, u.email, u.status AS userStatus, u.active, a.appt_time, a.status AS apptStatus, r.notes, s.name, s.price, s.status AS sessionStatus
       FROM users u
       INNER JOIN appointments a ON a.user_id = u.id
