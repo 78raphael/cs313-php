@@ -5,24 +5,23 @@ function week5($where)  {
 
   $scripture = '';
   
-  try {
-    $query = $db->prepare($where);
-    $query->execute();
 
-    $result = $query->fetchAll();
+  $stmt = $db->prepare($where);
+  $stmt->execute();
 
-    // return 'inside WEEK5: RESULT :::: ' . $result . '<br>';   // <—————————————————————————————————— TESTING
+  $result = $stmt->fetchAll();
+  $stmt->closeCursor();
 
-    foreach ($result as $row)  {
-      $scripture .= '<p><a href="index.php?action=team5details&id='.$row['id'].'">' . $row['book'] . ' '. $row['chapter'] . ':'. $row['verse'] . '</a></p>';
-    }
+  // return 'inside WEEK5: RESULT :::: ' . $result . '<br>';   // <—————————————————————————————————— TESTING
 
-    return 'inside WEEK5: ' . $scripture . '<br>';   // <—————————————————————————————————— TESTING
-
-    return $scripture;
-  } catch(PDOexception $error) {
-    return $error;
+  foreach ($result as $row)  {
+    $scripture .= '<p><a href="index.php?action=team5details&id='.$row['id'].'">' . $row['book'] . ' '. $row['chapter'] . ':'. $row['verse'] . '</a></p>';
   }
+
+  return 'inside WEEK5: ' . $scripture . '<br>';   // <—————————————————————————————————— TESTING
+
+  return $scripture;
+
 }
 
 function week5details($where)  {
