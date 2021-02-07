@@ -5,23 +5,17 @@ function week5($where)  {
 
   $scripture = '';
   
-
   $stmt = $db->prepare($where);
   $stmt->execute();
 
   $result = $stmt->fetchAll();
   $stmt->closeCursor();
 
-  // return 'inside WEEK5: RESULT :::: ' . $result . '<br>';   // <—————————————————————————————————— TESTING
-
   foreach ($result as $row)  {
     $scripture .= '<p><a href="index.php?action=team5details&id='.$row['id'].'">' . $row['book'] . ' '. $row['chapter'] . ':'. $row['verse'] . '</a></p>';
   }
 
-  return 'inside WEEK5: ' . $scripture . '<br>';   // <—————————————————————————————————— TESTING
-
   return $scripture;
-
 }
 
 function week5details($where)  {
@@ -39,10 +33,16 @@ function week5details($where)  {
 function infoDump($query) {
   $db = connector();
 
-  $results = '';
+  $build = '';
 
-  foreach($db->query($query) as $row) {
-    $results .= 'Fullname: ' . $row['first_name'] . ' ' . $row['last_name'] . 
+  $stmt = $db->prepare($query);
+  $stmt->execute();
+
+  $result = $stmt->fetchAll();
+  $stmt->closeCursor();
+
+  foreach($result as $row) {
+    $build .= 'Fullname: ' . $row['first_name'] . ' ' . $row['last_name'] . 
     '<br>Email: ' . $row['email'] . 
     '<br>User Status: ' . $row['userStatus'] .
     '<br>Appointment Time: ' . $row['appt_time'] .
@@ -52,9 +52,9 @@ function infoDump($query) {
     '<br>Price: $' . $row['price'] .
     '<br>Session Status: ' . $row['sessionStatus'];
 
-    $results .= '<br><hr>';
+    $build .= '<br><hr>';
   }
 
-  return $results;
+  return $build;
 
 }
