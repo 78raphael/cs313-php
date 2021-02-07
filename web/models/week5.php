@@ -11,9 +11,9 @@ function week5($where)  {
 
     $result = $query->fetchAll();
 
-    return 'inside WEEK5: RESULT :::: ' . $result . '<br>';   // <—————————————————————————————————— TESTING
+    // return 'inside WEEK5: RESULT :::: ' . $result . '<br>';   // <—————————————————————————————————— TESTING
 
-    foreach ($query as $row)  {
+    foreach ($result as $row)  {
       $scripture .= '<p><a href="index.php?action=team5details&id='.$row['id'].'">' . $row['book'] . ' '. $row['chapter'] . ':'. $row['verse'] . '</a></p>';
     }
 
