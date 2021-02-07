@@ -38,17 +38,18 @@ switch($action)
   case 'team5':
     echo 'inside team5<br>';
     if(isset($_POST['search']))   {
-      echo 'inside $_POST[search] - IF<br>';
+      echo 'inside $_POST[search] - IF<br>';   // <—————————————————————————————————— TESTING
 
       $where = "SELECT id, book, chapter, verse, content FROM Scriptures WHERE book = '".$_POST['search']."'";
     } else  {
-      echo 'inside $_POST[search] - ELSE<br>';
+      echo 'inside $_POST[search] - ELSE<br>';   // <—————————————————————————————————— TESTING
       $where = "SELECT id, book, chapter, verse, content FROM Scriptures";
     }
 
-    echo 'before $toPrint<br>';
+    echo 'WHERE: '. $where . '<br>';   // <—————————————————————————————————— TESTING
+    echo 'before $toPrint<br>';   // <—————————————————————————————————— TESTING
     $toPrint = week5($where);
-    echo 'after $toPrint<br>';
+    echo 'after $toPrint: '. $toPrint . '<br>';   // <—————————————————————————————————— TESTING
 
     include 'views/team5/index.php';
     break;
@@ -61,14 +62,14 @@ switch($action)
     include 'views/team5/details.php';
     break;
   case 'week5':
-    echo 'inside week5';
+    echo 'inside week5';   // <—————————————————————————————————— TESTING
     $query = "SELECT u.id, u.first_name, u.last_name, u.email, u.status AS userStatus, u.active, a.appt_time, a.status AS apptStatus, r.notes, s.name, s.price, s.status AS sessionStatus
       FROM users u
       INNER JOIN appointments a ON a.user_id = u.id
       INNER JOIN reviews r ON r.appointment_id = a.id
       INNER JOIN sessions s ON a.session_id = s.id";
 
-    echo 'Query: ' . $query . '<br>';
+    echo 'Query: ' . $query . '<br>';   // <—————————————————————————————————— TESTING
 
     $results = infoDump($query);
 

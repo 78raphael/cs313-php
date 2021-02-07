@@ -1,6 +1,7 @@
 <?php
 
 function week5($where)  {
+  return 'inside week5: ' . $where . '<br>';   // <—————————————————————————————————— TESTING
   $db = connector();
 
   $scripture = '';
