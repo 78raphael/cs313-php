@@ -6,9 +6,12 @@ function week5($where)  {
   $scripture = '';
   
   try {
-    $query = $db->query($where);
+    $query = $db->prepare($where);
+    $query->execute();
 
-    return 'inside WEEK5: QUERY :::: ' . $query . '<br>';   // <—————————————————————————————————— TESTING
+    $result = $query>fetchAll();
+
+    return 'inside WEEK5: RESULT :::: ' . $result . '<br>';   // <—————————————————————————————————— TESTING
 
     foreach ($query as $row)  {
       $scripture .= '<p><a href="index.php?action=team5details&id='.$row['id'].'">' . $row['book'] . ' '. $row['chapter'] . ':'. $row['verse'] . '</a></p>';
