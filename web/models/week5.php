@@ -9,7 +9,7 @@ function week5($where)  {
     $query = $db->prepare($where);
     $query->execute();
 
-    $result = $query>fetchAll();
+    $result = $query->fetchAll();
 
     return 'inside WEEK5: RESULT :::: ' . $result . '<br>';   // <—————————————————————————————————— TESTING
 
