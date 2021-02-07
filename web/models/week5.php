@@ -5,17 +5,21 @@ function week5($where)  {
 
   $scripture = '';
   
-  $query = $db->query($where);
+  try {
+    $query = $db->query($where);
 
-  return 'inside WEEK5: QUERY :::: ' . $query . '<br>';   // <—————————————————————————————————— TESTING
+    return 'inside WEEK5: QUERY :::: ' . $query . '<br>';   // <—————————————————————————————————— TESTING
 
-  foreach ($query as $row)  {
-    $scripture .= '<p><a href="index.php?action=team5details&id='.$row['id'].'">' . $row['book'] . ' '. $row['chapter'] . ':'. $row['verse'] . '</a></p>';
+    foreach ($query as $row)  {
+      $scripture .= '<p><a href="index.php?action=team5details&id='.$row['id'].'">' . $row['book'] . ' '. $row['chapter'] . ':'. $row['verse'] . '</a></p>';
+    }
+
+    return 'inside WEEK5: ' . $scripture . '<br>';   // <—————————————————————————————————— TESTING
+
+    return $scripture;
+  } catch(PDOexception $error) {
+    return $error;
   }
-
-  return 'inside WEEK5: ' . $scripture . '<br>';   // <—————————————————————————————————— TESTING
-
-  return $scripture;
 }
 
 function week5details($where)  {
