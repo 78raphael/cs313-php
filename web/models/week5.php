@@ -4,8 +4,12 @@ function week5($where)  {
   $db = connector();
 
   $scripture = '';
+  
+  $query = $db->query($where);
 
-  foreach ($db->query($where) as $row)  {
+  return 'inside WEEK5: QUERY :::: ' . $query . '<br>';   // <—————————————————————————————————— TESTING
+
+  foreach ($query as $row)  {
     $scripture .= '<p><a href="index.php?action=team5details&id='.$row['id'].'">' . $row['book'] . ' '. $row['chapter'] . ':'. $row['verse'] . '</a></p>';
   }
 
