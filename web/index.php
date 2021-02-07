@@ -36,7 +36,6 @@ switch($action)
     include 'views/week4/index.php';
     break;
   case 'team5':
-    echo 'inside team5<br>';
     if(isset($_POST['search']))   {
 
       $where = "SELECT id, book, chapter, verse, content FROM scriptures WHERE book = '".$_POST['search']."'";
