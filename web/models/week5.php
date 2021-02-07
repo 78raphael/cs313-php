@@ -3,7 +3,6 @@
 function week5($where)  {
   $db = connector();
 
-  return $db . '<br>';   // <—————————————————————————————————— TESTING
   $scripture = '';
   
   $stmt = $db->prepare($where);

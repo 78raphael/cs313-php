@@ -31,9 +31,10 @@ function connector() {
       $dbPassword = $dbOpts["pass"];
       $dbName = ltrim($dbOpts["path"],'/');
 
-      $db = new PDO("pgsql:host=$dbHost;port=$dbPort;dbname=$dbName", $dbUser, $dbPassword);
+      $dbOptions = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION);
 
-      $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+      $db = new PDO("pgsql:host=$dbHost;port=$dbPort;dbname=$dbName", $dbUser, $dbPassword, $dbOptions);
+
       return $db;
     }
     catch (PDOException $ex)  {
