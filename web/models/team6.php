@@ -69,7 +69,7 @@ function getTopics()  {
 
   $stmt = $db->prepare('SELECT * FROM topic');
   if(!$stmt) {
-    return($db->errorInfo());
+    return $db->errorInfo();
   }
   $stmt->execute();
 
