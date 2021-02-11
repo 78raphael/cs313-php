@@ -12,6 +12,7 @@ require_once 'views/php/bottom.php';
 
 require_once 'models/week5.php';
 
+
 $action = filter_input(INPUT_POST, 'action', FILTER_SANITIZE_STRING);
 if ($action == NULL) {
   $action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_STRING);
@@ -38,10 +39,10 @@ switch($action)
   case 'team5':
     if(isset($_POST['search']))   {
 
-      $where = "SELECT id, book, chapter, verse, content FROM scriptures WHERE book = '".$_POST['search']."'";
+      $where = "SELECT id, book, chapter, verse, content FROM Scriptures WHERE book = '".$_POST['search']."'";
     } else  {
 
-      $where = "SELECT id, book, chapter, verse, content FROM scriptures";
+      $where = "SELECT id, book, chapter, verse, content FROM Scriptures";
     }
 
     $toPrint = week5($where);
@@ -51,13 +52,12 @@ switch($action)
   case 'team5details':
     $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
 
-    $where = "SELECT id, book, chapter, verse, content FROM scriptures WHERE id = '". $id ."'";
+    $where = "SELECT id, book, chapter, verse, content FROM Scriptures WHERE id = '". $id ."'";
 
     $toPrint = week5details($where);
     include 'views/team5/details.php';
     break;
   case 'week5':
-
     $query = "SELECT u.id, u.first_name, u.last_name, u.email, u.status AS userStatus, u.active, a.appt_time, a.status AS apptStatus, r.notes, s.name, s.price, s.status AS sessionStatus
       FROM users u
       INNER JOIN appointments a ON a.user_id = u.id
@@ -67,6 +67,29 @@ switch($action)
     $results = infoDump($query);
 
     include 'views/week5/index.php';
+    break;
+  case 'team6':
+    require_once 'models/team6.php';
+    $toPrint = '';
+
+    $topics = getTopics();
+
+    if(isset($_POST['book'])) {
+      $book = filter_input(INPUT_POST, 'book', FILTER_SANITIZE_STRING);
+      $chapter = filter_input(INPUT_POST, 'chapter', FILTER_SANITIZE_STRING);
+      $verse = filter_input(INPUT_POST, 'verse', FILTER_SANITIZE_STRING);
+      $content = filter_input(INPUT_POST, 'content', FILTER_SANITIZE_STRING);
+      $faith = filter_input(INPUT_POST, 'Faith', FILTER_SANITIZE_NUMBER_INT);
+      $sacrifice = filter_input(INPUT_POST, 'Sacrifice', FILTER_SANITIZE_NUMBER_INT);
+      $charity = filter_input(INPUT_POST, 'Charity', FILTER_SANITIZE_NUMBER_INT);
+      $userCheckbox = filter_input(INPUT_POST, 'UserCheckbox', FILTER_SANITIZE_NUMBER_INT);
+      $userText = filter_input(INPUT_POST, 'UserText', FILTER_SANITIZE_STRING);
+
+      team6($book, $chapter, $verse, $content, $faith, $sacrifice, $charity, $userCheckbox, $userText);
+  
+    }
+
+    include 'views/team6/index.php';
     break;
   case 'week6':
     include 'views/week6/index.php';
