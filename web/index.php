@@ -69,6 +69,7 @@ switch($action)
     include 'views/week5/index.php';
     break;
   case 'team6':
+    echo 'before require_once';
     require_once 'models/team6.php';
     $toPrint = '';
 
