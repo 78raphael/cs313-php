@@ -69,7 +69,7 @@ function getTopics()  {
 
   $stmt = $db->prepare('SELECT * FROM topic');
   if(!$stmt) {
-    return($pdo->errorInfo());
+    return($db->errorInfo());
   }
   $stmt->execute();
 
