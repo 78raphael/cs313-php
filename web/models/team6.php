@@ -69,11 +69,12 @@ function getTopics()  {
 
   $stmt = $db->prepare('SELECT * FROM topic');
   if(!$stmt) {
-    return $db->errorInfo();
+    return $stmt;
+    // return $db->errorInfo();
   }
   $stmt->execute();
 
-  // $topics = $stmt->fetch(PDO::FETCH_ASSOC);
+  $topics = $stmt->fetch(PDO::FETCH_ASSOC);
   $stmt->closeCursor();
 
   return $topics;
