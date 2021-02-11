@@ -70,7 +70,7 @@ function getTopics()  {
   $stmt = $db->prepare('SELECT * FROM topic');
   $stmt->execute();
 
-  $topics = $stmt->fetc(PDO::FETCH_ASSOC);
+  $topics = $stmt->fetch(PDO::FETCH_ASSOC);
   $stmt->closeCursor();
 
   return $topics;
