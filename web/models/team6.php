@@ -66,6 +66,7 @@ function team6($book, $chapter, $verse, $content, $faith = NULL, $sacrifice = NU
 
 function getTopics()  {
   $db = connector();
+  return $db;
 
   $stmt = $db->prepare('SELECT * FROM topic');
   $stmt->execute();
