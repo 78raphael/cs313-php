@@ -68,7 +68,7 @@ function getTopics()  {
   $db = connector();
 
   $stmt = $db->prepare('SELECT * FROM topic');
-  $result = $stmt->execute();
+  $result = $db->query('SELECT * FROM topic');
   return $result;
   $topics = $stmt->fetchAll(PDO::FETCH_ASSOC);
   $stmt->closeCursor();

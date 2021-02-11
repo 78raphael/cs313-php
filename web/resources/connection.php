@@ -11,8 +11,8 @@ function connector() {
     $options = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION);
 
     try {
-      $link = new PDO($dsn, $username, $password, $options);
-      return $link;
+      $pdo = new PDO($dsn, $username, $password, $options);
+      return $pdo;
     } 
     catch(PDOException $e)  {
       echo $e;
@@ -21,9 +21,8 @@ function connector() {
   } else {
 
     try {
-      $dbUrl = getenv('DATABASE_URL');
 
-      $dbOpts = parse_url($dbUrl);
+      $dbOpts = parse_url(getenv('DATABASE_URL'));
 
       $dbHost = $dbOpts["host"];
       $dbPort = $dbOpts["port"];
@@ -31,11 +30,11 @@ function connector() {
       $dbPassword = $dbOpts["pass"];
       $dbName = ltrim($dbOpts["path"],'/');
 
-      $db = new PDO("pgsql:host=$dbHost;port=$dbPort;dbname=$dbName", $dbUser, $dbPassword);
+      $pdo = new PDO("pgsql:host=$dbHost;port=$dbPort;dbname=$dbName", $dbUser, $dbPassword);
 
-      $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+      $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-      return $db;
+      return $pdo;
     }
     catch (PDOException $ex)  {
       echo 'Error!: ' . $ex->getMessage();
