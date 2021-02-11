@@ -67,11 +67,11 @@ function team6($book, $chapter, $verse, $content, $faith = NULL, $sacrifice = NU
 function getTopics()  {
   $db = connector();
 
-  // $stmt = $db->prepare('SELECT * FROM topic');
-  $stmt = $db->query('SELECT * FROM topic');
+  $stmt = $db->prepare('SELECT * FROM topic');
+  $stmt->execute();
 
-  // $topics = $stmt->fetchAll(PDO::FETCH_ASSOC);
-  // $stmt->closeCursor();
+  $topics = $stmt->fetc(PDO::FETCH_ASSOC);
+  $stmt->closeCursor();
 
-  return $stmt;
+  return $topics;
 }
