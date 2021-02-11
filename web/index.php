@@ -74,6 +74,7 @@ switch($action)
     $toPrint = '';
 
     echo 'after require_once<br>';
+    echo 'before getTopics()<br>';
     $topics = getTopics();
     var_dump($topics);
 
