@@ -76,7 +76,7 @@ switch($action)
     echo 'after require_once<br>';
     echo 'before getTopics()<br>';
     $topics = getTopics();
-    dd($topics);
+    var_dump($topics);
 
     if(isset($_POST['book'])) {
       $book = filter_input(INPUT_POST, 'book', FILTER_SANITIZE_STRING);
