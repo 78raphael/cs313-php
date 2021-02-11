@@ -4,3 +4,13 @@ INSERT INTO Scriptures  (id, book, chapter, verse, content) VALUES (3, 'Doctrine
 INSERT INTO Scriptures  (id, book, chapter, verse, content) VALUES (4, 'Mosiah', 16, 9, 'He is the light and the life of the world; yea, a light that is endless, that can never be darkened; yea, and also a life which is endless, that there can be no more death.');
 
 DELETE FROM Scriptures;
+
+
+CREATE TABLE topic (
+  id SERIAL NOT NULL PRIMARY KEY,
+  name varchar(50) NOT NULL
+);
+
+INSERT INTO topic (name) VALUES ('Faith');
+INSERT INTO topic (name) VALUES ('Sacrifice');
+INSERT INTO topic (name) VALUES ('Charity');
