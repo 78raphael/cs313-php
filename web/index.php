@@ -69,14 +69,11 @@ switch($action)
     include 'views/week5/index.php';
     break;
   case 'team6':
-    echo 'before require_once<br>';
+
     require_once 'models/team6.php';
     $toPrint = '';
 
-    echo 'after require_once<br>';
-    echo 'before getTopics()<br>';
     $topics = getTopics();
-    var_dump($topics);
 
     if(isset($_POST['book'])) {
       $book = filter_input(INPUT_POST, 'book', FILTER_SANITIZE_STRING);
