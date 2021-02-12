@@ -1,10 +1,10 @@
 <?php
 
 function team6($book, $chapter, $verse, $content, $faith = NULL, $sacrifice = NULL, $charity = NULL, $userCheckbox = NULL, $userText = NULL)  {
-  $db = connector();
-  return "inside team6 function on team6.php";
+  $pdo = connector();
+  return "inside team6 function on team6.php" . $pdo;
 
-  $stmt = $db->prepare('INSERT INTO scriptures(book, chapter, verse, content)
+  $stmt = $pdo->prepare('INSERT INTO scriptures(book, chapter, verse, content)
   VALUES (:book, :chapter, :verse, :content)');
   $stmt->bindValue(':book', $book, PDO::PARAM_STR);
   $stmt->bindValue(':chapter', $chapter, PDO::PARAM_INT);
@@ -12,11 +12,11 @@ function team6($book, $chapter, $verse, $content, $faith = NULL, $sacrifice = NU
   $stmt->bindValue(':content', $content, PDO::PARAM_STR);
   $stmt->execute();
 
-  $lastId = $db->lastInsertId();
+  $lastId = $pdo->lastInsertId();
   $stmt->closeCursor();
 
   if($faith != NULL)  {
-    $stmt1 = $db->prepare('INSERT INTO scripture_topic(scripture_id, topic_id) VALUES (:lastId, :faith)');
+    $stmt1 = $pdo->prepare('INSERT INTO scripture_topic(scripture_id, topic_id) VALUES (:lastId, :faith)');
 
     $stmt1->bindValue(':lastId', $lastId, PDO::PARAM_INT);
     $stmt1->bindValue(':faith', $faith, PDO::PARAM_INT);
@@ -26,7 +26,7 @@ function team6($book, $chapter, $verse, $content, $faith = NULL, $sacrifice = NU
   }
 
   if($sacrifice != NULL)  {
-    $stmt2 = $db->prepare('INSERT INTO scripture_topic(scripture_id, topic_id) VALUES (:lastId, :sacrifice)');
+    $stmt2 = $pdo->prepare('INSERT INTO scripture_topic(scripture_id, topic_id) VALUES (:lastId, :sacrifice)');
 
     $stmt2->bindValue(':lastId', $lastId, PDO::PARAM_INT);
     $stmt2->bindValue(':sacrifice', $sacrifice, PDO::PARAM_INT);
@@ -36,7 +36,7 @@ function team6($book, $chapter, $verse, $content, $faith = NULL, $sacrifice = NU
   }
 
   if($charity != NULL)  {
-    $stmt3 = $db->prepare('INSERT INTO scripture_topic(scripture_id, topic_id) VALUES (:lastId, :charity)');
+    $stmt3 = $pdo->prepare('INSERT INTO scripture_topic(scripture_id, topic_id) VALUES (:lastId, :charity)');
 
     $stmt3->bindValue(':lastId', $lastId, PDO::PARAM_INT);
     $stmt3->bindValue(':charity', $charity, PDO::PARAM_INT);
@@ -47,14 +47,14 @@ function team6($book, $chapter, $verse, $content, $faith = NULL, $sacrifice = NU
 
 
   if($userCheckbox != NULL)  {
-    $stmt4 = $db->prepare('INSERT INTO topic (name) VALUES(:userText)');
+    $stmt4 = $pdo->prepare('INSERT INTO topic (name) VALUES(:userText)');
     $stmt4->bindValue(':userText', $userText, PDO::PARAM_STR);
     $stmt4->execute();
 
-    $lastTopicId = $db->lastInsertId();
+    $lastTopicId = $pdo->lastInsertId();
     $stmt4->closeCursor();
 
-    $stmt5 = $db->prepare('INSERT INTO scripture_topic(scripture_id, topic_id) VALUES (:lastId, :lastTopicId)');
+    $stmt5 = $pdo->prepare('INSERT INTO scripture_topic(scripture_id, topic_id) VALUES (:lastId, :lastTopicId)');
 
     $stmt5->bindValue(':lastId', $lastId, PDO::PARAM_INT);
     $stmt5->bindValue(':lastTopicId', $lastTopicId, PDO::PARAM_INT);
