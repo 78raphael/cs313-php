@@ -71,13 +71,10 @@ switch($action)
   case 'team6':
 
     require_once 'models/team6.php';
-    $toPrint = '';
 
+    $toPrint = '';
     $topics = getTopics();
 
-    var_dump($topics);
-
-    echo 'before if<br>';
     if(isset($_POST['book'])) {
 
       $book = filter_input(INPUT_POST, 'book', FILTER_SANITIZE_STRING);
@@ -91,16 +88,6 @@ switch($action)
       $userText = filter_input(INPUT_POST, 'UserText', FILTER_SANITIZE_STRING);
 
       echo 'before team6()<br>';
-
-      echo "Book: " . $book. "<br>"; 
-      echo "Chapter: " . $chapter. "<br>"; 
-      echo "Verse: " . $verse. "<br>"; 
-      echo "Content: " . $content. "<br>"; 
-      echo "Faith: " . $faith. "<br>"; 
-      echo "Sacrifice: " . $sacrifice. "<br>"; 
-      echo "Charity: " . $charity. "<br>"; 
-      echo "userCheckbox: " . $userCheckbox. "<br>"; 
-      echo "userText: " . $userText. "<br>";
 
       $team6 = team6($book, $chapter, $verse, $content, $faith, $sacrifice, $charity, $userCheckbox, $userText);
 
