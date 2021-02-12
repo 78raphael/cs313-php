@@ -36,12 +36,14 @@ function connector() {
       $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
       var_dump($pdo);
-      return $pdo;
+      // return $pdo;
     }
     catch (PDOException $ex)  {
       echo 'Error!: ' . $ex->getMessage();
       die();
     }
+
+    return $pdo;
   }
 }
 
