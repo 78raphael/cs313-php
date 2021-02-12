@@ -31,11 +31,14 @@ function connector() {
       $dbPassword = $dbOpts["pass"];
       $dbName = ltrim($dbOpts["path"],'/');
 
-      $dbOptions = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION);
+      // $dbOptions = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION);
 
-      return new PDO("pgsql:host=$dbHost;port=$dbPort;dbname=$dbName", $dbUser, $dbPassword, $dbOptions);
+      $pdo = new PDO("pgsql:host=$dbHost;port=$dbPort;dbname=$dbName", $dbUser, $dbPassword);
 
-      // return $pdo;
+      $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+      var_dump($pdo);
+      return $pdo;
       // return "return connector<br>Env: $env<br>Password: $dbPassword<br>DB Name: $dbName<br>PDO: $pdo";
     }
     catch (PDOException $ex)  {
