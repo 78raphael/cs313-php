@@ -1,8 +1,10 @@
 <?php
 
-function team6($book, $chapter, $verse, $content, $faith = NULL, $sacrifice = NULL, $charity = NULL, $userCheckbox = NULL, $userText = NULL)  {
+// function team6($book, $chapter, $verse, $content, $faith = NULL, $sacrifice = NULL, $charity = NULL, $userCheckbox = NULL, $userText = NULL)  {
+
+function team6($book){
   $pdo = connector();
-  return "inside team6 function on team6.php" . $pdo;
+  return "Book: $book <br>Inside team6 function on team6.php<br>$pdo";
 
   $stmt = $pdo->prepare('INSERT INTO scriptures(book, chapter, verse, content)
   VALUES (:book, :chapter, :verse, :content)');
