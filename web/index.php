@@ -75,6 +75,8 @@ switch($action)
 
     $topics = getTopics();
 
+    var_dump($topics);
+
     echo 'before if<br>';
     if(isset($_POST['book'])) {
 
