@@ -2,6 +2,7 @@
 
 function team6($book, $chapter, $verse, $content, $faith = NULL, $sacrifice = NULL, $charity = NULL, $userCheckbox = NULL, $userText = NULL)  {
   $db = connector();
+  return $db;
 
   $stmt = $db->prepare('INSERT INTO scriptures(book, chapter, verse, content)
   VALUES (:book, :chapter, :verse, :content)');

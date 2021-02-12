@@ -77,7 +77,7 @@ switch($action)
 
     echo 'before if<br>';
     if(isset($_POST['book'])) {
-      echo $_POST['book'];
+
       $book = filter_input(INPUT_POST, 'book', FILTER_SANITIZE_STRING);
       $chapter = filter_input(INPUT_POST, 'chapter', FILTER_SANITIZE_STRING);
       $verse = filter_input(INPUT_POST, 'verse', FILTER_SANITIZE_STRING);
@@ -88,7 +88,21 @@ switch($action)
       $userCheckbox = filter_input(INPUT_POST, 'UserCheckbox', FILTER_SANITIZE_NUMBER_INT);
       $userText = filter_input(INPUT_POST, 'UserText', FILTER_SANITIZE_STRING);
 
-      team6($book, $chapter, $verse, $content, $faith, $sacrifice, $charity, $userCheckbox, $userText);
+      echo 'before team6()<br>';
+
+      echo "Book: " . $book. "<br>"; 
+      echo "Chapter: " . $chapter. "<br>"; 
+      echo "Verse: " . $verse. "<br>"; 
+      echo "Content: " . $content. "<br>"; 
+      echo "Faith: " . $faith. "<br>"; 
+      echo "Sacrifice: " . $sacrifice. "<br>"; 
+      echo "Charity: " . $charity. "<br>"; 
+      echo "userCheckbox: " . $userCheckbox. "<br>"; 
+      echo "userText: " . $userText. "<br>";
+
+      $team6 = team6($book, $chapter, $verse, $content, $faith, $sacrifice, $charity, $userCheckbox, $userText);
+
+      echo $team6;
   
     }
 
