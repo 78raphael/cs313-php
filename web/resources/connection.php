@@ -35,8 +35,8 @@ function connector() {
 
       $pdo = new PDO("pgsql:host=$dbHost;port=$dbPort;dbname=$dbName", $dbUser, $dbPassword, $dbOptions);
 
-      // return $pdo;
-      return "return connector<br>Env: $env<br>Password: $dbPassword<br>DB Name: $dbName<br>PDO: $pdo";
+      return $pdo;
+      // return "return connector<br>Env: $env<br>Password: $dbPassword<br>DB Name: $dbName<br>PDO: $pdo";
     }
     catch (PDOException $ex)  {
       echo 'Error!: ' . $ex->getMessage();
