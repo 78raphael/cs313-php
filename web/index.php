@@ -87,12 +87,7 @@ switch($action)
       $userCheckbox = filter_input(INPUT_POST, 'UserCheckbox', FILTER_SANITIZE_NUMBER_INT);
       $userText = filter_input(INPUT_POST, 'UserText', FILTER_SANITIZE_STRING);
 
-      echo 'before team6()<br>';
-
       team6($book, $chapter, $verse, $content, $faith, $sacrifice, $charity, $userCheckbox, $userText);
-
-      // echo $team6;
-  
     }
 
     include 'views/team6/index.php';
