@@ -75,7 +75,9 @@ switch($action)
 
     $topics = getTopics();
 
+    echo 'before if<br>';
     if(isset($_POST['book'])) {
+      echo $_POST['book'];
       $book = filter_input(INPUT_POST, 'book', FILTER_SANITIZE_STRING);
       $chapter = filter_input(INPUT_POST, 'chapter', FILTER_SANITIZE_STRING);
       $verse = filter_input(INPUT_POST, 'verse', FILTER_SANITIZE_STRING);
