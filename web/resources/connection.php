@@ -36,7 +36,7 @@ function connector() {
       // $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
       // return $pdo;
-      return "return connector<br>$env<br>$dbHost<br>$pdo";
+      return "return connector<br>$env<br>$dbHost<br>";
     }
     catch (PDOException $ex)  {
       echo 'Error!: ' . $ex->getMessage();
