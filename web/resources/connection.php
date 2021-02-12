@@ -33,10 +33,10 @@ function connector() {
 
       $pdo = new PDO("pgsql:host=$dbHost;port=$dbPort;dbname=$dbName", $dbUser, $dbPassword);
 
-      $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+      // $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
       // return $pdo;
-      return "return connector";
+      return "return connector<br>$env<br>$dbHost<br>$pdo";
     }
     catch (PDOException $ex)  {
       echo 'Error!: ' . $ex->getMessage();
