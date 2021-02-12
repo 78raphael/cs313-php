@@ -89,9 +89,9 @@ switch($action)
 
       echo 'before team6()<br>';
 
-      $team6 = team6($book, $chapter, $verse, $content, $faith, $sacrifice, $charity, $userCheckbox, $userText);
+      team6($book, $chapter, $verse, $content, $faith, $sacrifice, $charity, $userCheckbox, $userText);
 
-      echo $team6;
+      // echo $team6;
   
     }
 
