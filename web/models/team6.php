@@ -12,8 +12,8 @@ function getTopics()  {
   return $topics;
 }
 
-function team6($pdo, $book, $chapter, $verse, $content, $faith = NULL, $sacrifice = NULL, $charity = NULL, $userCheckbox = NULL, $userText = NULL)  {
-  $pdo = connector();
+function team6(PDO $pdo, $book, $chapter, $verse, $content, $faith = NULL, $sacrifice = NULL, $charity = NULL, $userCheckbox = NULL, $userText = NULL)  {
+  // $pdo = connector();
 
   $stmt = $pdo->prepare('INSERT INTO scriptures(book, chapter, verse, content)
   VALUES (:book, :chapter, :verse, :content)');
