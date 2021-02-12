@@ -22,7 +22,8 @@ function connector() {
 
     try {
 
-      $dbOpts = parse_url(getenv('DATABASE_URL'));
+      $env = getenv('DATABASE_URL');
+      $dbOpts = parse_url($env);
 
       $dbHost = $dbOpts["host"];
       $dbPort = $dbOpts["port"];
@@ -34,7 +35,8 @@ function connector() {
 
       $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-      return $pdo;
+      // return $pdo;
+      return "return connector";
     }
     catch (PDOException $ex)  {
       echo 'Error!: ' . $ex->getMessage();

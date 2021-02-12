@@ -2,9 +2,9 @@
 
 $checkboxes = '';
 
-foreach($topics AS $topic)  {
-  $checkboxes .= '<input type="checkbox" name="'.$topic['name'].'" value="'.$topic['id'].'">'.$topic['name'].'</label><br>';
-}
+// foreach($topics AS $topic)  {
+//   $checkboxes .= '<input type="checkbox" name="'.$topic['name'].'" value="'.$topic['id'].'">'.$topic['name'].'</label><br>';
+// }
 
 $checkboxes .= '<input type="checkbox" name="UserCheckbox" value="4"><input type="text" name="UserText" placeholder="Enter new topic"></label><br>';
 
