@@ -41,10 +41,9 @@ function connector() {
       echo 'Error!: ' . $ex->getMessage();
       die();
     }
-
-    var_dump($pdo);
-    return $pdo;
   }
+  var_dump($pdo);
+  return $pdo;
 }
 
 function check_local()  {
