@@ -1,9 +1,9 @@
 <?php
 
 function getTopics()  {
-  $db = connector();
+  $pdo = connector();
 
-  $stmt = $db->prepare('SELECT * FROM topic');
+  $stmt = $pdo->prepare('SELECT * FROM topic');
   $stmt->execute();
 
   $topics = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -12,8 +12,8 @@ function getTopics()  {
   return $topics;
 }
 
-function team6(PDO $pdo, $book, $chapter, $verse, $content, $faith = NULL, $sacrifice = NULL, $charity = NULL, $userCheckbox = NULL, $userText = NULL)  {
-  // $pdo = connector();
+function team6($book, $chapter, $verse, $content, $faith = NULL, $sacrifice = NULL, $charity = NULL, $userCheckbox = NULL, $userText = NULL)  {
+  $pdo = connector();
 
   $stmt = $pdo->prepare('INSERT INTO scriptures(book, chapter, verse, content)
   VALUES (:book, :chapter, :verse, :content)');
