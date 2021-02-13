@@ -17,6 +17,7 @@ function team6($book, $chapter, $verse, $content, $faith = NULL, $sacrifice = NU
 
   $stmt = $pdo->prepare('INSERT INTO scriptures(book, chapter, verse, content)
   VALUES (:book, :chapter, :verse, :content)');
+
   $stmt->bindValue(':book', $book, PDO::PARAM_STR);
   $stmt->bindValue(':chapter', $chapter, PDO::PARAM_INT);
   $stmt->bindValue(':verse', $verse, PDO::PARAM_INT);

@@ -22,17 +22,19 @@
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. In congue consequat risus et maximus. Vestibulum ultrices a tortor in dapibus. Duis tellus risus, ornare vitae enim quis, imperdiet faucibus purus. Donec vel arcu sit amet turpis sagittis gravida a quis augue. Duis ac leo sed quam elementum eleifend eu in diam. Nam elementum semper turpis et vehicula. Pellentesque at consequat felis.
       </div>
 
-      <div>
-        <button class="" id="click-me">Click Me</button>
+      <div class="default-div">
+        <button class="btn-div" id="click-me">Click Me</button>
       </div>
 
-      <div>
+      <div class="default-div">
         <input type="text" id="color-chooser" placeholder="Enter color">
-        <button class="" id="color-button">Get Color</button>
+      </div>
+      <div class="default-div">
+        <button class="btn-div" id="color-button">Get Color</button>
       </div>
 
-      <div>
-        <button class="" id="visibility">Fade Button</button>
+      <div class="default-div">
+        <button class="btn-div" id="visibility">Fade Button</button>
       </div>
     </div>
   </main>

@@ -72,7 +72,6 @@ switch($action)
 
     require_once 'models/team6.php';
 
-    $toPrint = '';
     $topics = getTopics();
 
     if(isset($_POST['book'])) {

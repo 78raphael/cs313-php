@@ -12,9 +12,13 @@
       <h1>Week 5: Scripture Resources</h1>
         <?=$toPrint?>
         <form action="index.php?action=team5" method="POST">
-          <label for="search">Enter Book</label>
-          <input type="text" name="search">
-          <button type="submit" name="submitBtn">Submit</button>
+          <div class="default-div">
+            <label for="search">Enter Book</label><br>
+            <input type="text" name="search">
+          </div>
+          <div class="default-div">
+            <button type="submit" name="submitBtn">Submit</button>
+          </div>
         </form>
       </div>
     </main>

@@ -3,10 +3,10 @@
 $checkboxes = '';
 
 foreach($topics AS $topic)  {
-  $checkboxes .= '<input type="checkbox" name="'.$topic['name'].'" value="'.$topic['id'].'">'.$topic['name'].'</label><br>';
+  $checkboxes .= '<p><input type="checkbox" name="'.$topic['name'].'" value="'.$topic['id'].'">'.$topic['name'].'</label></p>';
 }
 
-$checkboxes .= '<input type="checkbox" name="UserCheckbox" value="4"><input type="text" name="UserText" placeholder="Enter new topic"></label><br>';
+$checkboxes .= '<p><input type="checkbox" name="UserCheckbox" value="4"><input type="text" name="UserText" placeholder="Enter new topic"></label></p>';
 
 ?>
 <?=$top_stuff?>
@@ -26,7 +26,7 @@ $checkboxes .= '<input type="checkbox" name="UserCheckbox" value="4"><input type
         <br>
         <?=$checkboxes?>
         <br>
-        <input type="submit" name="submit">
+        <button type="submit" name="submit">Submit</button>
         </form>
       </div>
     </main>

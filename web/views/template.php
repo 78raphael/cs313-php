@@ -6,7 +6,7 @@
     <?=$navigation?>
     <main>
       <div class="container">
-
+        <h1>Week X - Activity</h1>
       </div>
     </main>
     <?=$bottom_stuff?>
