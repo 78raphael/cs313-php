@@ -1,24 +1,26 @@
 <?php
 
 function connector() {
+  $pdo = NULL;
+
   if(check_local()) {
 
-    $server = '127.0.0.1';
-    $db = 'CSE341';
-    $username = 'root';
-    $password = 'Xf=(ln!6VX';
-    $dsn = "mysql:host=$server;dbname=$db";
-    $options = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION);
-
     try {
+      $server = '127.0.0.1';
+      $db = 'CSE341';
+      $username = 'root';
+      $password = 'Xf=(ln!6VX';
+      $dsn = "mysql:host=$server;dbname=$db";
+      $options = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION);
+
       $pdo = new PDO($dsn, $username, $password, $options);
-      return $pdo;
     } 
     catch(PDOException $e)  {
       echo $e;
       exit;
     }
-  } else {
+  } 
+  else {
 
     try {
 
@@ -34,15 +36,13 @@ function connector() {
       $pdo = new PDO("pgsql:host=$dbHost;port=$dbPort;dbname=$dbName", $dbUser, $dbPassword);
 
       $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-      var_dump($pdo);
-      // return $pdo;
     }
     catch (PDOException $ex)  {
       echo 'Error!: ' . $ex->getMessage();
       die();
     }
 
+    var_dump($pdo);
     return $pdo;
   }
 }
