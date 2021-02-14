@@ -6,6 +6,7 @@ function connector() {
   if(check_local()) {
 
     try {
+
       $server = '127.0.0.1';
       $db = 'CSE341';
       $username = 'root';
@@ -49,8 +50,10 @@ function connector() {
 
 function check_local()  {
   $whitelist = array( '127.0.0.1', '::1' );
+  $_SESSION['env'] = "Heroku";
 
   if(in_array($_SERVER['REMOTE_ADDR'], $whitelist )) {
+    $_SESSION['env'] = "Localhost";
     return true;
   }
 }

@@ -12,6 +12,7 @@ require_once 'views/php/bottom.php';
 
 require_once 'models/week5.php';
 
+check_local();
 
 $action = filter_input(INPUT_POST, 'action', FILTER_SANITIZE_STRING);
 if ($action == NULL) {
@@ -92,6 +93,14 @@ switch($action)
     include 'views/team6/index.php';
     break;
   case 'week6':
+    if(isset($_SESSION['w6_login']))  {
+      if($_SESSION['w6_login'] === true)  {
+        require_once 'models/week6.php';
+        $appointments = formatAppointments(getAppointments($_SESSION['status']));
+        include 'views/week6/login.php';
+        exit;
+      }
+    }
     include 'views/week6/index.php';
     break;
   case 'week7':

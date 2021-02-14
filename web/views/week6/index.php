@@ -16,7 +16,7 @@ if(!isset($_SESSION)) {
         <div class="">
           <h3>Login</h3>
           <?=$message?>
-          <form method="POST" action="controllers/week6/index.php?action=login">
+          <form method="POST" action="/controllers/week6/index.php?action=login">
             <div class="default-div">
               <label for="email">Enter Email</label><br>
               <input type="text" name="email" placeholder="ex. name@email.com">

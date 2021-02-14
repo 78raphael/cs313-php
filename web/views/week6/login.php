@@ -18,6 +18,11 @@ if(!isset($_SESSION)) {
     <main>
       <div class="container">
         <h1>Welcome <?=$fullName?></h1>
+        <div class="btn-div">
+          <a href="/controllers/week6/?action=logout" alt="Logout">
+            <div class="">Logout</div>
+          </a>
+        </div>
         <div class="">
           <h3>Status: <?=$status?></h3>
           <?=$message?>

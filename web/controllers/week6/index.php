@@ -20,6 +20,13 @@ if ($action == NULL) {
 }
 
 switch($action) {
+  case 'logout':
+    $_SESSION['w6_login'] = false;
+    $_SESSION['full_name'] = '';
+    $_SESSION['status'] = '';
+    $_SESSION['message'] = '<div class="success">Logout Successful</div>';
+    include '../../views/week6/index.php';
+    break;
   case 'login':
     $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_STRING);
     $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
@@ -33,6 +40,7 @@ switch($action) {
       exit;
     }
 
+    $_SESSION['w6_login'] = true;
     $_SESSION['full_name'] = $result['full_name'];
     $_SESSION['status'] = $result['status'];
 

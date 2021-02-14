@@ -14,7 +14,12 @@
 function validate($email, $password) {
   $pdo = connector();
 
-  $stmt = $pdo->prepare("SELECT u.password, CONCAT(u.first_name, ' ', u.last_name) AS full_name, u.status FROM users u WHERE u.email = :email AND u.active LIMIT 1");
+  if($_SESSION['env'] === 'Localhost')  {
+    $query = "SELECT u.password, CONCAT(u.first_name, ' ', u.last_name) AS full_name, u.status FROM users u WHERE u.email = :email AND u.active = 1 LIMIT 1";
+  } else {
+    $query = "SELECT u.password, CONCAT(u.first_name, ' ', u.last_name) AS full_name, u.status FROM users u WHERE u.email = :email AND u.active LIMIT 1";
+  }
+  $stmt = $pdo->prepare($query);
 
   $stmt->bindValue(':email', $email, PDO::PARAM_STR);
   $stmt->execute();
@@ -34,28 +39,30 @@ function getAppointments($status)  {
   $pdo = connector();
 
   if($status == 'admin')  {
-    $mysql = "SELECT a.id AS appt_id, a.user_id, a.session_id, a.appt_time, a.status AS appt_status, CONCAT(u.first_name, ' ', u.last_name) AS full_name, u.status AS user_status, s.name AS session_name, s.status AS session_status, r.id AS review_id, r.notes
-    FROM appointments a
-    INNER JOIN users u ON u.id = a.user_id
-    INNER JOIN sessions s ON s.id = a.session_id
-    INNER JOIN reviews r ON r.appointment_id = a.id
-    WHERE u.active = 1
-    ORDER BY a.appt_time;
-    ";
-
-    $postgresql = "SELECT a.id AS appt_id, a.user_id, a.session_id, a.appt_time, a.status AS appt_status, CONCAT(u.first_name, ' ', u.last_name) AS full_name, u.status AS user_status, s.name AS session_name, s.status AS session_status, r.id AS review_id, r.notes
-    FROM appointments a
-    INNER JOIN users u ON u.id = a.user_id
-    INNER JOIN sessions s ON s.id = a.session_id
-    INNER JOIN reviews r ON r.appointment_id = a.id
-    WHERE u.active
-    ORDER BY a.appt_time;
-    ";
+    if($_SESSION['env'] === 'Localhost')  {
+      $query = "SELECT a.id AS appt_id, a.user_id, a.session_id, a.appt_time, a.status AS appt_status, CONCAT(u.first_name, ' ', u.last_name) AS full_name, u.status AS user_status, s.name AS session_name, s.status AS session_status, r.id AS review_id, r.notes
+      FROM appointments a
+      INNER JOIN users u ON u.id = a.user_id
+      INNER JOIN sessions s ON s.id = a.session_id
+      INNER JOIN reviews r ON r.appointment_id = a.id
+      WHERE u.active = 1
+      ORDER BY a.appt_time;
+      ";
+    } else {
+      $query = "SELECT a.id AS appt_id, a.user_id, a.session_id, a.appt_time, a.status AS appt_status, CONCAT(u.first_name, ' ', u.last_name) AS full_name, u.status AS user_status, s.name AS session_name, s.status AS session_status, r.id AS review_id, r.notes
+      FROM appointments a
+      INNER JOIN users u ON u.id = a.user_id
+      INNER JOIN sessions s ON s.id = a.session_id
+      INNER JOIN reviews r ON r.appointment_id = a.id
+      WHERE u.active
+      ORDER BY a.appt_time;
+      ";
+    }
   } else {
     $query = "";
   }
 
-  $stmt = $pdo->prepare($postgresql);
+  $stmt = $pdo->prepare($query);
   $stmt->execute();
 
   $result = $stmt->fetchAll();
@@ -110,11 +117,13 @@ function formatAppointments($results) {
 function updateAppointments($review_id, $note) {
   $pdo = connector();
 
-  $mysql = "UPDATE reviews r SET r.notes = :note WHERE r.id = :review_id";
+  if($_SESSION['env'] === 'Localhost')  {
+    $query = "UPDATE reviews r SET r.notes = :note WHERE r.id = :review_id";
+  } else {
+    $query = 'UPDATE "reviews" AS r SET "notes" = :note WHERE r.id = :review_id';
+  }
 
-  $postgresql = 'UPDATE "reviews" AS r SET "notes" = :note WHERE r.id = :review_id';
-
-  $stmt = $pdo->prepare($postgresql);
+  $stmt = $pdo->prepare($query);
 
   $stmt->bindValue(':review_id', $review_id, PDO::PARAM_INT);
   $stmt->bindValue(':note', $note, PDO::PARAM_STR);
