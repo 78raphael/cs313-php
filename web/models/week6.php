@@ -34,7 +34,7 @@ function getAppointments($status)  {
   $pdo = connector();
 
   if($status == 'admin')  {
-    $query = "SELECT a.id AS appt_id, a.user_id, a.session_id, a.appt_time, a.status AS appt_status, CONCAT(u.first_name, ' ', u.last_name) AS full_name, u.status AS user_status, s.name AS session_name, s.status AS session_status, r.id AS review_id, r.notes
+    $mysql = "SELECT a.id AS appt_id, a.user_id, a.session_id, a.appt_time, a.status AS appt_status, CONCAT(u.first_name, ' ', u.last_name) AS full_name, u.status AS user_status, s.name AS session_name, s.status AS session_status, r.id AS review_id, r.notes
     FROM appointments a
     INNER JOIN users u ON u.id = a.user_id
     INNER JOIN sessions s ON s.id = a.session_id
@@ -42,11 +42,20 @@ function getAppointments($status)  {
     WHERE u.active = 1
     ORDER BY a.appt_time;
     ";
+
+    $postgresql = "SELECT a.id AS appt_id, a.user_id, a.session_id, a.appt_time, a.status AS appt_status, CONCAT(u.first_name, ' ', u.last_name) AS full_name, u.status AS user_status, s.name AS session_name, s.status AS session_status, r.id AS review_id, r.notes
+    FROM appointments a
+    INNER JOIN users u ON u.id = a.user_id
+    INNER JOIN sessions s ON s.id = a.session_id
+    INNER JOIN reviews r ON r.appointment_id = a.id
+    WHERE u.active
+    ORDER BY a.appt_time;
+    ";
   } else {
     $query = "";
   }
 
-  $stmt = $pdo->prepare($query);
+  $stmt = $pdo->prepare($postgresql);
   $stmt->execute();
 
   $result = $stmt->fetchAll();

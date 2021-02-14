@@ -24,12 +24,7 @@ switch($action) {
     $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_STRING);
     $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
 
-    echo 'Email: ' . $email . '<br>';
-    echo 'Password: ' . $password . '<br>';
-
     $result = validate($email, $password);
-
-    var_dump($result);
 
     if(!$result) {
       $_SESSION["message"] = "<div class='failed'>Please enter correct username or password</div>";
