@@ -116,11 +116,11 @@ function updateAppointments($review_id, $note) {
 
   $stmt = $pdo->prepare($postgresql);
 
-  return $postgresql;
-
   $stmt->bindValue(':review_id', $review_id, PDO::PARAM_STR);
   $stmt->bindValue(':note', $note, PDO::PARAM_STR);
   $stmt->execute();
+
+  return $postgresql;
 
   $result = $stmt->rowCount();
   $stmt->closeCursor();
