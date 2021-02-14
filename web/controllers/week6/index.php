@@ -45,7 +45,9 @@ switch($action) {
     $note_id = 'note_' . $review_id;
     $note = filter_input(INPUT_POST, $note_id, FILTER_SANITIZE_STRING);
 
+    echo 'Before updateAppointments';
     $updated = updateAppointments($review_id, $note);
+    echo 'After updateAppointments';
 
     $appointments = formatAppointments(getAppointments($_SESSION['status']));
 
