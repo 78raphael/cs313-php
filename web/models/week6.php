@@ -100,7 +100,9 @@ function formatAppointments($results) {
       </tr>
       <tr>
         <th colspan='1'></th>
-        <td colspan='3'><button type='submit' name='SbmtBtn' value='$appt[review_id]'>Update</button></td>
+        <td colspan='1'><button type='submit' name='UpdateBtn' value='$appt[review_id]'>Update</button></td>
+        <td></td>
+        <td colspan='1'><button type='submit' name='DeleteBtn' value='$appt[appt_id]'>Delete Appt</button></td>
       <tr>
       ";
       $appointments .= "</table>";
@@ -133,7 +135,31 @@ function updateAppointments($review_id, $note) {
   $result = $stmt->rowCount();
   $stmt->closeCursor();
 
-  return $result; 
+  return $result;
+}
 
 
+/**
+ *    DELETE appointment notes
+ *      param $review_id
+ */
+function deleteAppointments($id) {
+  $pdo = connector();
+
+  if($_SESSION['env'] === 'Localhost')  {
+    $query = "DELETE FROM appointments WHERE id = :id";
+  } else {
+    $query = 'DELETE FROM "appointments" WHERE id = :id';
+  }
+
+  $stmt = $pdo->prepare($query);
+
+  $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+
+  $stmt->execute();
+
+  $result = $stmt->rowCount();
+  $stmt->closeCursor();
+
+  return $result;
 }

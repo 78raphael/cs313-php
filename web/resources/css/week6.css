@@ -43,3 +43,7 @@ textarea  {
   border-radius: 10px;
   border: 5px solid transparent;
 }
+
+button[type=submit] {
+  width: 100%;
+}

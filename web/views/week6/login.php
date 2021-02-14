@@ -28,7 +28,7 @@ if(!isset($_SESSION)) {
           <?=$message?>
           <div class="default-div">
             <h3>Appointments</h3>
-            <form method="POST" action="/controllers/week6/?action=updateAppt">
+            <form method="POST" action="/controllers/week6/?action=updateNote">
               <?=$appointments?>
             </form>
           </div>
