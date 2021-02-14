@@ -49,7 +49,10 @@ switch($action) {
     $updated = updateAppointments($review_id, $note);
     echo 'After updateAppointments<br> Updated: ' . $updated . '<br>';
 
+    echo 'Status: ' . $_SESSION['status'] . '<br>';
+
     $appointments = formatAppointments(getAppointments($_SESSION['status']));
+    echo 'After formatAppointments<br>';
 
     $_SESSION['message'] = "<div class='success'> Reviews updated: $updated</div>";
 
