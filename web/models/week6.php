@@ -112,8 +112,8 @@ function updateAppointments($review_id, $note) {
 
   $mysql = "UPDATE reviews r SET r.notes = :note WHERE r.id = :review_id";
 
-  $postgresql = "UPDATE 'reviews' AS r SET 'notes' = $note WHERE r.id = $review_id";
-  return $postgresql;
+  $postgresql = 'UPDATE "reviews" AS r SET "notes" = :note WHERE r.id = :review_id';
+  // return $postgresql;
 
   $stmt = $pdo->prepare($postgresql);
 
@@ -122,7 +122,7 @@ function updateAppointments($review_id, $note) {
 
   $stmt->execute();
 
-  return $postgresql;
+  // return $postgresql;
 
   $result = $stmt->rowCount();
   $stmt->closeCursor();
