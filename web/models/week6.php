@@ -14,7 +14,7 @@
 function validate($email, $password) {
   $pdo = connector();
 
-  $stmt = $pdo->prepare("SELECT u.password, CONCAT(u.first_name, ' ', u.last_name) AS full_name, u.status FROM users u WHERE u.email = :email && u.active = 1 LIMIT 1");
+  $stmt = $pdo->prepare("SELECT u.password, CONCAT(u.first_name, ' ', u.last_name) AS full_name, u.status FROM users u WHERE u.email = :email AND u.active LIMIT 1");
 
   $stmt->bindValue(':email', $email, PDO::PARAM_STR);
   $stmt->execute();
