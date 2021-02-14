@@ -41,7 +41,12 @@ switch($action) {
     $_SESSION['full_name'] = $result['full_name'];
     $_SESSION['status'] = $result['status'];
 
+    echo 'Full Name: ' . $_SESSION['full_name'] . '<br>';
+    echo 'Status: ' . $_SESSION['status'] . '<br>';
+
     $appointments = formatAppointments(getAppointments($result['status']));
+
+    $
 
     include '../../views/week6/login.php';
     break;
