@@ -115,11 +115,10 @@ function updateAppointments($review_id, $note) {
   $postgresql = "UPDATE 'reviews' AS r SET 'notes' = :note WHERE r.id = :review_id";
 
   $stmt = $pdo->prepare($postgresql);
-  var_dump($stmt);
-  return $stmt;
 
   $stmt->bindValue(':review_id', $review_id, PDO::PARAM_INT);
   $stmt->bindValue(':note', $note, PDO::PARAM_STR);
+  var_dump($stmt);
   return $stmt;
   $stmt->execute();
 
