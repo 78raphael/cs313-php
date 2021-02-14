@@ -29,6 +29,8 @@ switch($action) {
 
     $result = validate($email, $password);
 
+    var_dump($result);
+
     if(!$result) {
       $_SESSION["message"] = "<div class='failed'>Please enter correct username or password</div>";
 
