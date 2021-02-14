@@ -47,7 +47,7 @@ switch($action) {
 
     echo 'Before updateAppointments';
     $updated = updateAppointments($review_id, $note);
-    echo 'After updateAppointments';
+    echo 'After updateAppointments<br> Updated: ' . $updated . '<br>';
 
     $appointments = formatAppointments(getAppointments($_SESSION['status']));
 
