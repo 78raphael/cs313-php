@@ -44,17 +44,17 @@ CREATE TABLE reviews (
   notes text,
   created_at timestamp NOT NULL,
   updated_at timestamp NOT NULL,
-  FOREIGN KEY (appointment_id) REFERENCES appointments(id)
+  FOREIGN KEY (appointment_id) REFERENCES appointments(id) ON DELETE CASCADE
 );
 
 
 
 INSERT INTO users (id, first_name, last_name, password, email, status, active, created_at, updated_at)
 VALUES
-	(1, 'Han', 'Solo', '', 'hansolo@email.com', 'client', true, '2021-02-06 20:42:25', '2021-02-06 20:42:25'),
-	(2, 'Stephen', 'Strange', '', 'doctor@strange.com', 'guest', true, '2021-02-06 20:42:51', '2021-02-06 20:42:51'),
-	(3, 'Bruce', 'Banner', '', 'doctor@hulk.com', 'guest', true, '2021-02-06 20:43:42', '2021-02-06 20:43:42'),
-	(4, 'Admin', 'Admin', '', 'admin@email.com', 'admin', true, '2021-02-06 20:44:00', '2021-02-06 20:44:00');
+	(1, 'Han', 'Solo', 'password', 'hansolo@email.com', 'client', true, '2021-02-06 20:42:25', '2021-02-06 20:42:25'),
+	(2, 'Stephen', 'Strange', 'password', 'doctor@strange.com', 'guest', true, '2021-02-06 20:42:51', '2021-02-06 20:42:51'),
+	(3, 'Bruce', 'Banner', 'password', 'doctor@hulk.com', 'guest', true, '2021-02-06 20:43:42', '2021-02-06 20:43:42'),
+	(4, 'Admin', 'Admin', 'admin', 'admin@email.com', 'admin', true, '2021-02-06 20:44:00', '2021-02-06 20:44:00');
 
 
 INSERT INTO sessions (id, name, description, image, price, status, created_at, updated_at)
