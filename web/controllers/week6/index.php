@@ -24,17 +24,38 @@ switch($action) {
     $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_STRING);
     $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
 
-    if(validate($email, $password)) {
-      include '../../views/week6/login.php';
-    } else  {
+    $result = validate($email, $password);
+
+    if(!$result) {
       $_SESSION["message"] = "<div class='failed'>Please enter correct username or password</div>";
-      echo $_SESSION["message"];
+
       header('Location: /?action=week6');
       exit;
     }
+
+    $_SESSION['full_name'] = $result['full_name'];
+    $_SESSION['status'] = $result['status'];
+
+    $appointments = formatAppointments(getAppointments($result['status']));
+
+    include '../../views/week6/login.php';
     break;
-  case '':
-    include '';
+  case 'updateAppt':
+    $review_id = filter_input(INPUT_POST, 'SbmtBtn', FILTER_SANITIZE_NUMBER_INT);
+    $note_id = 'note_' . $review_id;
+    $note = filter_input(INPUT_POST, $note_id, FILTER_SANITIZE_STRING);
+
+    echo 'Review ID: '. $review_id . '<br>';
+    echo 'Note ID: '. $note_id . '<br>';
+    echo 'Note: '. $note . '<br>';
+
+    $updated = updateAppointments($review_id, $note);
+
+    $appointments = formatAppointments(getAppointments($_SESSION['status']));
+
+    $_SESSION['message'] = "<div class='success'> Reviews updated: $updated</div>";
+
+    include '../../views/week6/login.php';
     break;
   default:
   include '../../views/week6/index.php';
