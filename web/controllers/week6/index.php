@@ -45,16 +45,11 @@ switch($action) {
     $note_id = 'note_' . $review_id;
     $note = filter_input(INPUT_POST, $note_id, FILTER_SANITIZE_STRING);
 
-    echo 'Before updateAppointments<br>';
+
     $updated = updateAppointments($review_id, $note);
-    echo 'After updateAppointments<br> Updated: ' . $updated . '<br>';
-
-    echo 'Status: ' . $_SESSION['status'] . '<br>';
-
     $appointments = formatAppointments(getAppointments($_SESSION['status']));
-    echo 'After formatAppointments<br>';
 
-    $_SESSION['message'] = "<div class='success'> Reviews updated: $updated</div>";
+    $_SESSION['message'] = "<div class='success'> Review Updated</div>";
 
     include '../../views/week6/login.php';
     break;
