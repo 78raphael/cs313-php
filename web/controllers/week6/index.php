@@ -36,11 +36,7 @@ switch($action) {
     $_SESSION['full_name'] = $result['full_name'];
     $_SESSION['status'] = $result['status'];
 
-    var_dump("SESSION: ", $_SESSION);
-
     $appointments = formatAppointments(getAppointments($result['status']));
-
-    
 
     include '../../views/week6/login.php';
     break;

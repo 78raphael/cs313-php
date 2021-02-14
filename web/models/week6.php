@@ -110,7 +110,11 @@ function formatAppointments($results) {
 function updateAppointments($review_id, $note) {
   $pdo = connector();
 
-  $stmt = $pdo->prepare("UPDATE reviews r SET r.notes = :note WHERE r.id = :review_id");
+  $mysql = "UPDATE reviews r SET r.notes = :note WHERE r.id = :review_id";
+
+  $postgresql = "UPDATE reviews AS r SET 'notes' = :note WHERE r.id = :review_id";
+
+  $stmt = $pdo->prepare($postgresql);
 
   $stmt->bindValue(':review_id', $review_id, PDO::PARAM_STR);
   $stmt->bindValue(':note', $note, PDO::PARAM_STR);
