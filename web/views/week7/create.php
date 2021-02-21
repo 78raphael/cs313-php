@@ -21,7 +21,13 @@ $message = (isset($_SESSION['message'])) ? $_SESSION['message'] : '';
           </div>
           <form method="POST" action="/controllers/project1/?action=create">
             <div class="appt users-dropdown">
-              <?=$userList?>
+              <?php 
+              if($_SESSION['status'] === 'admin') {
+                echo $userList;
+              } else  {
+                echo "<input type='hidden' name='usersList' value='$_SESSION[p1_id]'>";
+              }
+              ?>
             </div>
             <div class="appt sessions-dropdown">
               <?=$sessionList?>
