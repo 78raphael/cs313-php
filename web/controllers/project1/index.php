@@ -118,9 +118,9 @@ switch($action) {
     $notes = filter_input(INPUT_POST, 'notes', FILTER_SANITIZE_STRING);
 
     $dateTime = $date . ' ' . $time;
-    echo 'UserID: '. $user_id . '<br>Session ID'. $session_id. 'DateTime<br>'. $dateTime. 'Notes<br>'. $notes;
+    echo 'UserID: '. $user_id . '<br>Session ID: '. $session_id. '<br>DateTime: '. $dateTime. '<br>Notes<br>'. $notes;
 
-    // $result = createAppointments($user_id, $session_id, $dateTime, $notes);
+    $result = createAppointments($user_id, $session_id, $dateTime, $notes);
     echo 'Result: ' . $result . '<br>';   // <—————————————————————————————————— TESTING
 
     if($result > 0) {
