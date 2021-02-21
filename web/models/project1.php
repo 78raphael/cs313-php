@@ -141,7 +141,7 @@ function createAppointments($user_id, $session_id, $appt_time, $notes = null) {
   $stmt->execute();
 
   $appointment_id = $pdo->lastInsertId();
-  return $appointment_id;
+
   $result = $stmt->rowCount();
   $stmt->closeCursor();
 
