@@ -133,6 +133,7 @@ function createAppointments($user_id, $session_id, $appt_time, $notes = null) {
   }
 
   $stmt = $pdo->prepare($query);
+  return $stmt;
 
   $stmt->bindValue(':user_id', $user_id, PDO::PARAM_INT);
   $stmt->bindValue(':session_id', $session_id, PDO::PARAM_INT);
