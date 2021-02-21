@@ -7,6 +7,8 @@ if(!isset($_SESSION)) {
   session_start();
 } 
 
+var_dump($_SESSION);   // <—————————————————————————————————— TESTING
+
 require_once '../../resources/connection.php';
 require_once '../../resources/login.php';
 
@@ -118,7 +120,7 @@ switch($action) {
     $notes = filter_input(INPUT_POST, 'notes', FILTER_SANITIZE_STRING);
 
     $dateTime = $date . ' ' . $time;
-    echo 'UserID: '. $user_id . '<br>Session ID: '. $session_id. '<br>DateTime: '. $dateTime. '<br>Notes<br>'. $notes;
+    echo 'UserID: '. $user_id . '<br>Session ID: '. $session_id. '<br>DateTime: '. $dateTime. '<br>Notes<br>'. $notes;      // <—————————————————————————————————— TESTING
 
     $result = createAppointments($user_id, $session_id, $dateTime, $notes);
     echo '<br>Result: ' . $result . '<br>';   // <—————————————————————————————————— TESTING
