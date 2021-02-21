@@ -145,7 +145,7 @@ function createAppointments($user_id, $session_id, $appt_time, $notes = null) {
   $result = $stmt->rowCount();
   $stmt->closeCursor();
 
-  // $reviewResult = createReview($appointment_id, $notes);
+  $reviewResult = createReview($appointment_id, $notes);
 
   return $result;
 }
