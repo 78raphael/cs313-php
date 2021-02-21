@@ -241,12 +241,12 @@ function generateNav($status)  {
   $userNav .= '<div class="">Create Appointment</div>';
   $userNav .= '</a></div>';
 
-  if($status === 'admin') {
-    $userNav .= '<div class="btn-div nav-btn">';
-    $userNav .= '<a href="/controllers/project1/?action=adminAppt" alt="Admin Appointment">';
-    $userNav .= '<div class="">Admin Appointment</div>';
-    $userNav .= '</a></div>';
-  }
+  // if($status === 'admin') {
+  //   $userNav .= '<div class="btn-div nav-btn">';
+  //   $userNav .= '<a href="/controllers/project1/?action=adminAppt" alt="Admin Appointment">';
+  //   $userNav .= '<div class="">Admin Appointment</div>';
+  //   $userNav .= '</a></div>';
+  // }
 
   // $userNav .= '';
   $userNav .= '</div>';
