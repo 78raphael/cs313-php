@@ -65,8 +65,8 @@ function register($first_name, $last_name, $username, $email, $password)  {
     $query = "INSERT INTO users (first_name, last_name, username, password, email, status, active) 
     VALUES (:first_name, :last_name, :username, :hashedPassword, :email, 'guest', 1)";
   } else {
-    $query = "INSERT INTO users (first_name, last_name, username, password, email, status) 
-    VALUES (:first_name, :last_name, :username, :hashedPassword, :email, 'guest', 1)";
+    $query = "INSERT INTO users (first_name, last_name, username, password, email, status, active, created_at, updated_at) 
+    VALUES (:first_name, :last_name, :username, :hashedPassword, :email, 'guest', TRUE, NOW(), NOW())";
   }
   $stmt = $pdo->prepare($query);
 

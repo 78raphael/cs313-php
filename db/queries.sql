@@ -5,6 +5,7 @@ CREATE TABLE users  (
   id SERIAL PRIMARY KEY,
   first_name varchar(50) NOT NULL,
   last_name varchar(50) NOT NULL,
+  username varchar(50) NOT NULL,
   password varchar(255) NOT NULL,
   email varchar(50) NOT NULL,
   status user_status_type,
@@ -49,12 +50,12 @@ CREATE TABLE reviews (
 
 
 
-INSERT INTO users (id, first_name, last_name, password, email, status, active, created_at, updated_at)
+INSERT INTO users (id, first_name, last_name, username, password, email, status, active, created_at, updated_at)
 VALUES
-	(1, 'Han', 'Solo', 'password', 'hansolo@email.com', 'client', true, '2021-02-06 20:42:25', '2021-02-06 20:42:25'),
-	(2, 'Stephen', 'Strange', 'password', 'doctor@strange.com', 'guest', true, '2021-02-06 20:42:51', '2021-02-06 20:42:51'),
-	(3, 'Bruce', 'Banner', 'password', 'doctor@hulk.com', 'guest', true, '2021-02-06 20:43:42', '2021-02-06 20:43:42'),
-	(4, 'Admin', 'Admin', 'admin', 'admin@email.com', 'admin', true, '2021-02-06 20:44:00', '2021-02-06 20:44:00');
+	(1, 'Han', 'Solo', 'Chewy', 'password', 'hansolo@email.com', 'client', true, '2021-02-06 20:42:25', '2021-02-06 20:42:25'),
+	(2, 'Stephen', 'Strange', 'Doctor', 'password', 'doctor@strange.com', 'guest', true, '2021-02-06 20:42:51', '2021-02-06 20:42:51'),
+	(3, 'Bruce', 'Banner', 'hulkOut', 'password', 'doctor@hulk.com', 'guest', true, '2021-02-06 20:43:42', '2021-02-06 20:43:42'),
+	(4, 'Administrator', 'User', 'admin', 'admin', 'admin@email.com', 'admin', true, '2021-02-06 20:44:00', '2021-02-06 20:44:00');
 
 
 INSERT INTO sessions (id, name, description, image, price, status, created_at, updated_at)
