@@ -1,13 +1,11 @@
 <?php
-if(!isset($_SESSION)) {
-  session_start();
-} 
-  $message = (isset($_SESSION['message'])) ? $_SESSION['message'] : '';
+session_start();
 
-  $fullName = $_SESSION['p1_full_name'];
-  $status = $_SESSION['p1_status'];
+$message = (isset($_SESSION['message'])) ? $_SESSION['message'] : '';
 
-  // var_dump($appointments);
+$fullName = $_SESSION['p1_full_name'];
+$status = $_SESSION['p1_status'];
+
 ?>
 <?=$top_stuff?>
     <link rel="stylesheet" href="/resources/css/week7.css">
