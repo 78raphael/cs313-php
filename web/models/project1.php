@@ -131,7 +131,7 @@ function createAppointments($user_id, $session_id, $appt_time, $notes = null) {
   } else {
     $query = "INSERT INTO appointments (user_id, session_id, appt_time, status, created_at, updated_at) VALUES (:user_id, :session_id, :appt_time, 'requested', NOW(), NOW())";
   }
-return $query;
+
   $stmt = $pdo->prepare($query);
   return $stmt;
 
