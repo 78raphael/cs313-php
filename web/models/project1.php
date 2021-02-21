@@ -132,17 +132,16 @@ function createAppointments($user_id, $session_id, $appt_time, $notes = null) {
     $query = "INSERT INTO appointments (user_id, session_id, appt_time, status, created_at, updated_at) VALUES (:user_id, :session_id, :appt_time, 'requested', NOW(), NOW())";
   }
 
-  return $query;
-
   $stmt = $pdo->prepare($query);
 
   $stmt->bindValue(':user_id', $user_id, PDO::PARAM_INT);
   $stmt->bindValue(':session_id', $session_id, PDO::PARAM_INT);
   $stmt->bindValue(':appt_time', $appt_time, PDO::PARAM_STR);
-
+  dump($stmt);
   $stmt->execute();
 
   $appointment_id = $pdo->lastInsertId();
+  return $appointment_id;
   $result = $stmt->rowCount();
   $stmt->closeCursor();
 
