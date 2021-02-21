@@ -114,9 +114,12 @@ switch($action) {
     $date = filter_input(INPUT_POST, 'date', FILTER_SANITIZE_STRING);
     $time = filter_input(INPUT_POST, 'time', FILTER_SANITIZE_STRING);
     $notes = filter_input(INPUT_POST, 'notes', FILTER_SANITIZE_STRING);
-    echo 'User ID: ' . $user_id;
 
     $dateTime = $date . ' ' . $time;
+    echo 'User ID: ' . $user_id . '<br>';
+    echo 'Session ID: ' . $session_id . '<br>';
+    echo 'DateTime: ' . $dateTime . '<br>';
+    echo 'Notes: ' . $notes . '<br>';
 
     $result = createAppointments($user_id, $session_id, $dateTime, $notes);
     
