@@ -41,7 +41,7 @@ $message = (isset($_SESSION['message'])) ? $_SESSION['message'] : '';
                 <label for="password">Enter password</label><br>
                 <input type="password" name="password" placeholder="Password" required>
               </div>
-              <div class="default-div">
+              <div class="default-div submit-25">
                 <button class="" type="submit" name="submitBtn">Register</button>
               </div>
             </form>

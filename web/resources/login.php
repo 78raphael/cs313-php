@@ -58,7 +58,8 @@ function validateEmail($email, $password) {
 function register($first_name, $last_name, $username, $email, $password)  {
   $pdo = connector();
 
-  $hashedPassword = hashIt($password);
+  // $hashedPassword = hashIt($password);
+  $hashedPassword = $password;
 
   if($_SESSION['env'] === 'Localhost')  {
     $query = "INSERT INTO users (first_name, last_name, username, password, email, status, active) 
