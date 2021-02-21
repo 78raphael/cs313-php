@@ -10,9 +10,8 @@ $assignments_list = '<ul class="assignments-ul">
   <li><a href="?action=week5" alt="Week 5 assignment">Week 5</a></li>
   <li><a href="?action=team6" alt="Week 6 assignment">Week 6 - Team Activity</a></li>
   <li><a href="?action=week6" alt="Week 6 assignment">Week 6</a></li>
-<!--
-  <li><a href="?action=week7" alt="Week 7 assignment">Week 7</a></li>
-  -->
+  <li><a href="?action=team7" alt="Week 7 assignment">Week 7 - Team Activity</a></li>
+  <li><a href="?action=week7" alt="Week 7 assignment">Week 7 - Project 1</a></li>
 <!--
   <li><a href="?action=week8" alt="Week 8 assignment">Week 8</a></li>
   -->

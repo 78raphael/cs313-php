@@ -45,9 +45,43 @@ textarea  {
 }
 
 button[type=submit] {
-  width: 100%;
+  width: 100%;.
 }
 
 .submit-25  {
   width: 25% !important;
+}
+
+.user-nav {
+  display: flex;
+  flex-direction: row;
+}
+
+.nav-btn  {
+  margin-right:20px;
+  margin-top: 20px;
+}
+
+.title-bar  {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+}
+
+.logout-btn {
+  margin: auto 0;
+}
+
+.appt {
+  margin: 10px 0;
+}
+
+select {
+  -ms-transform: scale(1.1); /* IE */
+  -moz-transform: scale(1.1); /* FF */
+  -webkit-transform: scale(1.1); /* Safari and Chrome */
+  -o-transform: scale(1.1); /* Opera */
+  transform: scale(1.1);
+  padding: 5px;
+  margin: 5px 0 0 9px ;
 }

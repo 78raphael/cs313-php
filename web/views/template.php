@@ -1,3 +1,8 @@
+<?php
+if(!isset($_SESSION)) {
+  session_start();
+}
+?>
 <?=$top_stuff?>
     <link rel="stylesheet" href="/resources/css/weekX.css">
     <title>TITLE HERE</title>
@@ -12,3 +17,8 @@
     <?=$bottom_stuff?>
   </body>
 </html>
+<?php
+  if(isset($_SESSION['message'])) { 
+    unset($_SESSION['message']); 
+  }
+?>

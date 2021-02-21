@@ -3,7 +3,8 @@
  *    Index Controller
  */
 
-(!isset($_SESSION)) ? session_start() : var_dump($_SESSION);
+session_start();
+var_dump($_SESSION);
 
 require_once 'resources/connection.php';
 require_once 'views/php/top.php';
@@ -104,7 +105,29 @@ switch($action)
     include 'views/week6/index.php';
     break;
   case 'week7':
+    if(isset($_SESSION['p1_login']))  {
+      if($_SESSION['p1_login'] === true)  {
+        require_once 'models/project1.php';
+
+        $userNav = generateNav($_SESSION['p1_status']);
+        $appointments = formatAppointments(getAppointments($_SESSION['p1_status'], $_SESSION['p1_id']), $_SESSION['p1_status']);
+
+        include 'views/week7/landing.php';
+        exit;
+      }
+    }
     include 'views/week7/index.php';
+    break;
+  case 'team7':
+    if(isset($_SESSION['w7_login']))  {
+      if($_SESSION['w7_login'] === true)  {
+        // run necessary function before going to
+        // landing page
+        include 'views/team7/landing.php';
+        exit;
+      }
+    }
+    include 'views/team7/index.php';
     break;
   case 'week8':
     include 'views/week8/index.php';

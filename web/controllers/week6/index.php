@@ -21,10 +21,11 @@ if ($action == NULL) {
 
 switch($action) {
   case 'logout':
-    $_SESSION['w6_login'] = false;
-    $_SESSION['full_name'] = '';
-    $_SESSION['status'] = '';
-    $_SESSION['env'] = '';
+
+    unset($_SESSION['full_name']);
+    unset($_SESSION['status']);
+    unset($_SESSION['w6_login']);
+
     $_SESSION['message'] = '<div class="success">Logout Successful</div>';
     include '../../views/week6/index.php';
     break;
@@ -49,7 +50,7 @@ switch($action) {
 
     include '../../views/week6/login.php';
     break;
-  case 'updateNote':
+  case 'update':
     $review_id = filter_input(INPUT_POST, 'UpdateBtn', FILTER_SANITIZE_NUMBER_INT);
     if($review_id != null)  {
       $note_id = 'note_' . $review_id;
@@ -69,14 +70,6 @@ switch($action) {
     $appointments = formatAppointments(getAppointments($_SESSION['status']));
 
     $_SESSION['message'] = $message;
-
-    include '../../views/week6/login.php';
-    break;
-  case 'deleteAppt':
-    $appt_id = filter_input(INPUT_POST, 'DeleteBtn', FILTER_SANITIZE_NUMBER_INT);
-
-    echo 'Appt ID: ' . $appt_id . '<br>';
-    // $deleted = deleteAppointments($appt_id);
 
     include '../../views/week6/login.php';
     break;

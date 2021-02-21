@@ -5,21 +5,21 @@ if(!isset($_SESSION)) {
   $message = (isset($_SESSION['message'])) ? $_SESSION['message'] : '';
 ?>
 <?=$top_stuff?>
-    <link rel="stylesheet" href="/resources/css/week6.css">
-    <title>Week 6 - Activity</title>
+    <link rel="stylesheet" href="/resources/css/week7.css">
+    <title>Project 1</title>
   </head>
   <body>
     <?=$navigation?>
     <main>
       <div class="container">
-        <h1>Week 6: DB Data Modification</h1>
+        <h1>Week 7: Project 1</h1>
         <div class="">
           <h3>Login</h3>
           <?=$message?>
-          <form method="POST" action="/controllers/week6/index.php?action=login">
+          <form method="POST" action="/controllers/project1/index.php?action=login">
             <div class="default-div">
-              <label for="email">Enter Email</label><br>
-              <input type="text" name="email" placeholder="ex. name@email.com">
+              <label for="username">Enter Username</label><br>
+              <input type="text" name="username" placeholder="Username">
             </div>
             <div class="default-div">
               <label for="password">Enter Password</label><br>
@@ -29,6 +29,9 @@ if(!isset($_SESSION)) {
               <button class="submit-25" type="submit" name="submitBtn">Submit</button>
             </div>
           </form>
+          <div>
+            If you do not have a login, <a href="/controllers/project1/?action=signup" alt="Register Username & Password">[register here]</a>
+          </div>
         </div>
       </div>
     </main>
