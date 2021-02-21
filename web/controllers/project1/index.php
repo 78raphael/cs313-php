@@ -80,7 +80,7 @@ switch($action) {
     include '../../views/week7/index.php';
     break;
   case 'update':
-    // TODO: Create blank review when appointments is created
+
     $review_id = filter_input(INPUT_POST, 'UpdateBtn', FILTER_SANITIZE_NUMBER_INT);
     if($review_id != null)  {
       $note_id = 'note_' . $review_id;
@@ -120,6 +120,7 @@ switch($action) {
     $dateTime = $date . ' ' . $time;
 
     $result = createAppointments($user_id, $session_id, $dateTime, $notes);
+    echo 'Result: ' . $result . '<br>';   // <—————————————————————————————————— TESTING
 
     if($result > 0) {
       $userNav = generateNav($_SESSION['p1_status']);

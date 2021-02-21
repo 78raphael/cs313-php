@@ -129,7 +129,7 @@ function createAppointments($user_id, $session_id, $appt_time, $notes = null) {
   if($_SESSION['env'] === 'Localhost')  {
     $query = "INSERT INTO appointments (user_id, session_id, appt_time, status) VALUES (:user_id, :session_id, :appt_time, 'requested')";
   } else {
-    $query = "INSERT INTO appointments (user_id, session_id, appt_time, status) VALUES (:user_id, :session_id, :appt_time, 'requested')";
+    $query = "INSERT INTO appointments (user_id, session_id, appt_time, status, created_at, updated_at) VALUES (:user_id, :session_id, :appt_time, 'requested', NOW(), NOW())";
   }
 
   $stmt = $pdo->prepare($query);
@@ -144,7 +144,7 @@ function createAppointments($user_id, $session_id, $appt_time, $notes = null) {
   $result = $stmt->rowCount();
   $stmt->closeCursor();
 
-  $reviewResult = createReview($appointment_id, $notes);
+  // $reviewResult = createReview($appointment_id, $notes);
 
   return $result;
 }
@@ -157,8 +157,8 @@ function createReview($appointment_id, $notes = null) {
     $query = "INSERT INTO reviews (appointment_id, notes) 
     VALUES (:appointment_id, :notes)";
   } else {
-    $query = "INSERT INTO reviews (appointment_id, notes) 
-    VALUES (:appointment_id, :notes)";
+    $query = "INSERT INTO reviews (appointment_id, notes, created_at, updated_at) 
+    VALUES (:appointment_id, :notes, NOW(), NOW())";
   }
 
   $stmt = $pdo->prepare($query);
