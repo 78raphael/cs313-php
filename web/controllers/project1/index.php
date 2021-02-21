@@ -121,12 +121,13 @@ switch($action) {
     echo 'UserID: '. $user_id . '<br>Session ID: '. $session_id. '<br>DateTime: '. $dateTime. '<br>Notes<br>'. $notes;
 
     $result = createAppointments($user_id, $session_id, $dateTime, $notes);
-    echo 'Result: ' . $result . '<br>';   // <—————————————————————————————————— TESTING
+    echo '<br>Result: ' . $result . '<br>';   // <—————————————————————————————————— TESTING
+    
+    $userList = formatUsers(getUsers());
+    $sessionList = formatSessions(getSessions());
 
     if($result > 0) {
       $userNav = generateNav($_SESSION['p1_status']);
-      $userList = formatUsers(getUsers());
-      $sessionList = formatSessions(getSessions());
       $appointments = formatAppointments(getAppointments($_SESSION['p1_status'], $_SESSION['p1_id']), $_SESSION['p1_status']);
 
       $_SESSION['message'] = '<div class="success">Appointment successfully created</div>';
