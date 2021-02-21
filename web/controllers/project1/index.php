@@ -6,8 +6,6 @@ if(!isset($_SESSION)) {
   session_start();
 }
 
-var_dump($_SESSION);   // <—————————————————————————————————— TESTING
-
 require_once '../../resources/connection.php';
 require_once '../../resources/login.php';
 
@@ -92,11 +90,10 @@ switch($action) {
       
     } else {
       $appt_id = filter_input(INPUT_POST, 'DeleteBtn', FILTER_SANITIZE_NUMBER_INT);
+
       $deleted = deleteAppointments($appt_id);
       $_SESSION['message'] = "<div class='success'>Appointment Removed</div>";
     }
-
-    $appt_id = filter_input(INPUT_POST, 'DeleteBtn', FILTER_SANITIZE_NUMBER_INT);
 
     $userNav = generateNav($_SESSION['p1_status']);
     $appointments = formatAppointments(getAppointments($_SESSION['p1_status'], $_SESSION['p1_id']), $_SESSION['p1_status']);
@@ -142,5 +139,3 @@ switch($action) {
     include '../../views/week7/index.php';
     break;
 }
-
-var_dump($_SESSION);   // <—————————————————————————————————— TESTING

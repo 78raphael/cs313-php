@@ -15,7 +15,6 @@ function connector() {
       $options = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION);
 
       $pdo = new PDO($dsn, $username, $password, $options);
-      // var_dump("PDO::Localhost", $pdo); // <—————————————————— TESTING
     } 
     catch(PDOException $e)  {
       echo $e;
@@ -38,7 +37,6 @@ function connector() {
       $pdo = new PDO("pgsql:host=$dbHost;port=$dbPort;dbname=$dbName", $dbUser, $dbPassword);
 
       $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-      // var_dump("PDO::Heroku", $pdo); // <—————————————————— TESTING
     }
     catch (PDOException $ex)  {
       echo 'Error!: ' . $ex->getMessage();

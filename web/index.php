@@ -6,7 +6,6 @@
 if(!isset($_SESSION)) {
   session_start();
 }
-var_dump($_SESSION);
 
 require_once 'resources/connection.php';
 require_once 'views/php/top.php';
