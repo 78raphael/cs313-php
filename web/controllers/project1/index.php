@@ -2,7 +2,9 @@
 /**
  *    Project 1 (Week 7) Controller
  */
-session_start();
+if(!isset($_SESSION)) {
+  session_start();
+}
 
 var_dump($_SESSION);   // <—————————————————————————————————— TESTING
 

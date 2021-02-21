@@ -1,5 +1,7 @@
 <?php
-session_start();
+if(!isset($_SESSION)) {
+  session_start();
+}
 
 $message = (isset($_SESSION['message'])) ? $_SESSION['message'] : '';
 
