@@ -69,7 +69,6 @@ switch($action) {
     $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
 
     $register = register($first_name, $last_name, $username, $email, $password);
-    echo $register;
 
     if($register == 0) {
       include '../../views/week7/signup.php';
