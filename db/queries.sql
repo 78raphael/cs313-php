@@ -56,6 +56,7 @@ VALUES
 	(2, 'Stephen', 'Strange', 'Doctor', 'password', 'doctor@strange.com', 'guest', true, '2021-02-06 20:42:51', '2021-02-06 20:42:51'),
 	(3, 'Bruce', 'Banner', 'hulkOut', 'password', 'doctor@hulk.com', 'guest', true, '2021-02-06 20:43:42', '2021-02-06 20:43:42'),
 	(4, 'Administrator', 'User', 'admin', 'admin', 'admin@email.com', 'admin', true, '2021-02-06 20:44:00', '2021-02-06 20:44:00');
+  (5, 'Justin', 'Pierre', 'mcs1', 'mcs1', 'justin@mcs.com', 'guest', true, '2021-02-06 20:44:00', '2021-02-06 20:44:00');
 
 
 INSERT INTO sessions (id, name, description, image, price, status, created_at, updated_at)
