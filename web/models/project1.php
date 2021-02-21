@@ -137,7 +137,7 @@ function createAppointments($user_id, $session_id, $appt_time, $notes = null) {
   $stmt->bindValue(':user_id', $user_id, PDO::PARAM_INT);
   $stmt->bindValue(':session_id', $session_id, PDO::PARAM_INT);
   $stmt->bindValue(':appt_time', $appt_time, PDO::PARAM_STR);
-  dump($stmt);
+  return $stmt;
   $stmt->execute();
 
   $appointment_id = $pdo->lastInsertId();
