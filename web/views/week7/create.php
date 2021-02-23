@@ -22,7 +22,7 @@ $message = (isset($_SESSION['message'])) ? $_SESSION['message'] : '';
           <form method="POST" action="/controllers/project1/?action=create">
             <div class="appt users-dropdown">
               <?php 
-              if($_SESSION['status'] === 'admin') {
+              if($_SESSION['p1_status'] === 'admin') {
                 echo $userList;
               } else  {
                 echo "<input type='hidden' name='usersList' value='$_SESSION[p1_id]'>";

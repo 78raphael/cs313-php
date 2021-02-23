@@ -42,7 +42,7 @@ switch($action) {
     $result = validateUser($username, $password);
 
     if(!$result) {
-      $_SESSION['message'] = '<div class="failed">Please enter correct email or password</div>';
+      $_SESSION['message'] = '<div class="failed">Please enter correct username or password</div>';
       header('Location: /?action=week7');
       exit;
     }
